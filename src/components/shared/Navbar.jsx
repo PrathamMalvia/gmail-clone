@@ -44,7 +44,6 @@ const Navbar = () => {
                             round={true}
                         />
                     </div>
-
                 </div>
 
             </div>
