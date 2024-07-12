@@ -27,7 +27,7 @@ const Message = () => {
             </div>
 
             <div className="flex-none text-gray-400 text-sm">
-                Time rendering
+                Time renders here
             </div>
         </div>
     )
