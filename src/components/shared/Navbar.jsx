@@ -6,7 +6,7 @@ import Avatar from "react-avatar";
 
 const Navbar = () => {
     return (
-        <div className="flex items-center justify-between mx-3 h-16 border border-black">
+        <div className="flex items-center justify-between mx-2 mr-5 h-16">
             <div className="flex items-center gap-10">
                 <div className="flex items-center gap-2">
                     <div className="p-3 rounded-full hover:bg-gray-100 cursor-pointer">
@@ -40,7 +40,7 @@ const Navbar = () => {
                     <div className="cursor-pointer">
                         <Avatar
                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                            size="40"
+                            size="35"
                             round={true}
                         />
                     </div>

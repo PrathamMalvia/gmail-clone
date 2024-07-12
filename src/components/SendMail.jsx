@@ -2,6 +2,8 @@ import { RxCross2 } from "react-icons/rx"
 import { useDispatch, useSelector } from "react-redux";
 import { setOpen } from "../redux/appSlice";
 import { useState } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase";
 
 const SendMail = () => {
     const open = useSelector(store => store.appSlice.open);
@@ -20,9 +22,20 @@ const SendMail = () => {
         })
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        await addDoc(collection(db, "emails"), {
+            to: formData.to,
+            subject: formData.subject,
+            message: formData.message,
+            createdAt: serverTimestamp(),
+        })
+        dispatch(setOpen(false));
+        setFormData({
+            to: "",
+            subject: "",
+            message: ""
+        })
     }
 
     return (
@@ -65,7 +78,6 @@ const SendMail = () => {
                 </textarea>
                 <button
                     type="submit"
-                    onClick={() => dispatch(setOpen(false))}
                     className="bg-[#0B57D0] rounded-full w-fit px-4 text-white font-medium">
                     Send
                 </button>

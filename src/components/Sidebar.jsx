@@ -38,7 +38,7 @@ const Sidebar = () => {
     const dispatch = useDispatch();
 
     return (
-        <div className="w-[15%] border border-black">
+        <div className="w-[15%]">
             <div className="p-3">
                 <button onClick={() => dispatch(setOpen(true))} className="flex items-center gap-2 p-4 rounded-2xl hover:shadow-md bg-[#C2E7FF]">
                     <LuPencil size={"24px"} />
