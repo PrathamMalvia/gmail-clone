@@ -1,3 +1,4 @@
+import { deleteDoc, doc } from "firebase/firestore"
 import { BiArchiveIn } from "react-icons/bi"
 import { IoIosClose, IoMdArrowBack, IoMdMore } from "react-icons/io"
 import {
@@ -11,12 +12,23 @@ import {
     MdOutlineWatchLater
 } from "react-icons/md"
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import { db } from "../firebase"
 
 
 const Mail = () => {
     const navigate = useNavigate();
     const { selectedEmail } = useSelector(store => store.appSlice)
+    const params = useParams();
+
+    const deleteMailById = async (id) => {
+        try {
+            await deleteDoc(doc(db, "emails", id))
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const formatToIST = (date) => {
         const utcDate = date.getTime() + (date.getTimezoneOffset() * 60000);
@@ -47,7 +59,7 @@ const Mail = () => {
                     <div className="p-2 rounded-full hover:bg-gray-100 cursor-pointer">
                         <MdOutlineReport size={"20px"} />
                     </div>
-                    <div className="p-2 rounded-full hover:bg-gray-100 cursor-pointer">
+                    <div onClick={() => deleteMailById(params.id)} className="p-2 rounded-full hover:bg-gray-100 cursor-pointer">
                         <MdDeleteOutline size={"20px"} />
                     </div>
                     <div className="p-2 rounded-full hover:bg-gray-100 cursor-pointer">

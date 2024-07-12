@@ -3,6 +3,7 @@ import { RiStarSLine } from "react-icons/ri"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { setSelectedEmail } from "../redux/appSlice";
+import PropTypes from "prop-types";
 
 const Message = ({ email }) => {
     const navigate = useNavigate();
@@ -54,5 +55,15 @@ const Message = ({ email }) => {
         </div>
     )
 }
+
+Message.propTypes = {
+    email: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        message: PropTypes.string,
+        createdAt: PropTypes.shape({
+            toDate: PropTypes.func.isRequired,
+        }),
+    }).isRequired,
+};
 
 export default Message
