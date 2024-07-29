@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { MdLogout } from "react-icons/md";
+import gmail_logo from "../../assets/gmail_logo.webp";
 
 const Navbar = () => {
     const [input, setInput] = useState("");
@@ -37,7 +38,7 @@ const Navbar = () => {
                     <div className="p-3 rounded-full hover:bg-gray-100 cursor-pointer">
                         <IoMdMenu size={"24px"} />
                     </div>
-                    <img className="w-8" src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png" alt="gmail-logo" />
+                    <img className="w-8" src={gmail_logo} alt="gmail-logo" />
                     <h1 className="text-2xl text-gray-500 font-medium">Gmail</h1>
                 </div>
             </div>
