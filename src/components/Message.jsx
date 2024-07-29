@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSelectedEmail } from "../redux/appSlice";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
 const Message = ({ email }) => {
     const navigate = useNavigate();
@@ -31,7 +32,10 @@ const Message = ({ email }) => {
     };
 
     return (
-        <div
+        <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             onClick={openMail}
             className="flex items-center justify-between border-b border-gray-200 px-4 py-2 text-sm hover:cursor-pointer hover:shadow-md">
             <div className="flex items-center gap-3">
@@ -59,7 +63,7 @@ const Message = ({ email }) => {
             <div className="flex-none text-gray-400 text-sm">
                 <p>{email?.createdAt ? formatToIST(email.createdAt.toDate()) : ''}</p>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
