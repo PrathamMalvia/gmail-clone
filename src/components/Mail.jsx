@@ -90,7 +90,12 @@ const Mail = () => {
                 <div className="flex items-center justify-between bg-white gap-1">
                     <div className="flex items-center gap-2">
                         <h1 className="text-xl font-medium">{selectedEmail?.subject}</h1>
-                        <div className="flex items-center gap-1 text-sm bg-gray-200 rounded-md px-2">Inbox <IoIosClose /></div>
+                        <div className="flex items-center gap-1 text-sm bg-gray-200 rounded-md px-2">
+                            Inbox
+                            <span className="hover:bg-gray-400">
+                                <IoIosClose size={"15px"} />
+                            </span>
+                        </div>
                     </div>
                     <div className="flex-none text-gray-400 my-5 text-sm">
                         <p>{selectedEmail?.createdAt ? formatToIST(selectedEmail.createdAt.toDate()) : ''}</p>
@@ -98,8 +103,8 @@ const Mail = () => {
                 </div>
 
                 <div className="text-gray-500 text-sm ">
-                    <h1>{selectedEmail?.to}</h1>
-                    <span>to me</span>
+                    <h1>You</h1>
+                    <span>to {selectedEmail?.to}</span>
                 </div>
 
                 <div className="my-10 ">

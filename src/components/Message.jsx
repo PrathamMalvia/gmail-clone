@@ -1,7 +1,7 @@
-import { MdOutlineCropSquare } from "react-icons/md"
-import { RiStarSLine } from "react-icons/ri"
+import { MdOutlineCropSquare } from "react-icons/md";
+import { RiStarSLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { setSelectedEmail } from "../redux/appSlice";
 import PropTypes from "prop-types";
 
@@ -43,9 +43,16 @@ const Message = ({ email }) => {
                 </div>
             </div>
 
+            <div className="flex items-center ml-4 w-[15%]">
+                <p className="text-gray-900 font-semibold truncate inline-block max-w-full">
+                    To: {email?.to}
+                </p>
+            </div>
+
             <div className="flex-1 ml-4">
                 <p className="text-gray-600 truncate inline-block max-w-full">
-                    {email?.message}
+                    <span className="text-gray-900 font-bold">{email?.subject}</span>
+                    <span className=""> &#8208; {email?.message}</span>
                 </p>
             </div>
 
@@ -53,17 +60,17 @@ const Message = ({ email }) => {
                 <p>{email?.createdAt ? formatToIST(email.createdAt.toDate()) : ''}</p>
             </div>
         </div>
-    )
+    );
 }
 
 Message.propTypes = {
     email: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        message: PropTypes.string,
-        createdAt: PropTypes.shape({
-            toDate: PropTypes.func.isRequired,
-        }),
-    }).isRequired,
+        to: PropTypes.string.isRequired,
+        subject: PropTypes.string.isRequired,
+        message: PropTypes.string.isRequired,
+        createdAt: PropTypes.object.isRequired // Assuming createdAt is a Firestore Timestamp object
+    }).isRequired
 };
 
-export default Message
+export default Message;

@@ -1,14 +1,14 @@
 // import { useState } from "react"
 import { LuPencil } from "react-icons/lu"
-import { MdOutlineDrafts, MdOutlineKeyboardArrowDown, MdOutlineStarOutline, MdOutlineWatchLater } from "react-icons/md"
-import { RiInboxFill } from "react-icons/ri"
+import {  MdOutlineInbox, MdOutlineKeyboardArrowDown, MdOutlineStarOutline, MdOutlineWatchLater } from "react-icons/md"
 import { TbSend2 } from "react-icons/tb"
 import { useDispatch } from "react-redux"
 import { setOpen } from "../redux/appSlice"
+import { IoDocumentOutline } from "react-icons/io5"
 
 const sidebarItems = [
     {
-        icon: <RiInboxFill size={"20px"} />,
+        icon: <MdOutlineInbox size={"20px"} />,
         text: "Inbox"
     },
     {
@@ -24,7 +24,7 @@ const sidebarItems = [
         text: "Sent"
     },
     {
-        icon: <MdOutlineDrafts size={"20px"} />,
+        icon: <IoDocumentOutline size={"20px"} />,
         text: "Drafts"
     },
     {
@@ -34,7 +34,7 @@ const sidebarItems = [
 ]
 
 const Sidebar = () => {
-    // const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false); // this is local state variable
     const dispatch = useDispatch();
 
     return (

@@ -18,7 +18,7 @@ const SendMail = () => {
     const changeHandler = (e) => {
         setFormData({
             ...formData,
-            [e.target.name]: [e.target.value]
+            [e.target.name]: e.target.value // Fixed array issue
         })
     }
 
@@ -30,7 +30,9 @@ const SendMail = () => {
             message: formData.message,
             createdAt: serverTimestamp(),
         })
+
         dispatch(setOpen(false));
+
         setFormData({
             to: "",
             subject: "",
@@ -78,7 +80,7 @@ const SendMail = () => {
                 </textarea>
                 <button
                     type="submit"
-                    className="bg-[#0B57D0] rounded-full w-fit px-4 text-white font-medium">
+                    className="bg-[#0B57D0] rounded-full w-fit px-4 py-1 text-white font-medium">
                     Send
                 </button>
             </form>

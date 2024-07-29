@@ -23,7 +23,6 @@ const mailType = [
 const Inbox = () => {
     const [mailTypeSelected, setMailTypeSelected] = useState(0);
 
-
     return (
         <div className="flex-1 bg-white rounded-xl mx-5">
             <div className="flex items-center justify-between px-4">
