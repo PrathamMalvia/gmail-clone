@@ -9,6 +9,7 @@ import { setSearchText, setUser } from "../../redux/appSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import { MdLogout } from "react-icons/md";
 
 const Navbar = () => {
     const [input, setInput] = useState("");
@@ -72,15 +73,21 @@ const Navbar = () => {
                         />
                         <AnimatePresence>
                             {toggle && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                                transition={{ duration: 0.1 }}
-                                className="absolute top-10 right-3 z-20 shadow-lg bg-white rounded-md"
-                            >
-                                <p onClick={signOutHandler} className="p-2 underline">LOGOUT</p>
-                            </motion.div>
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.8 }}
+                                    transition={{ duration: 0.1 }}
+                                    className="absolute top-10 right-3 z-20 shadow-lg bg-white rounded-md"
+                                >
+                                    <div
+                                        onClick={signOutHandler}
+                                        className="flex items-center p-4 gap-2"
+                                    >
+                                        <MdLogout />
+                                        <h1 className="text-md font-normal">Sign&nbsp;out</h1>
+                                    </div>
+                                </motion.div>
                             )}
                         </AnimatePresence>
                     </div>

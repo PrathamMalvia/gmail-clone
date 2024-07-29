@@ -53,7 +53,7 @@ const Message = ({ email }) => {
                 </h1>
             </div>
 
-            <div className="flex-1 ml-4">
+            <div className="flex-1 ml-4 mr-14 w-[20%]">
                 <p className="text-gray-600 truncate inline-block max-w-full">
                     <span className="text-gray-900 font-bold">{email?.subject}</span>
                     <span className=""> &#8208; {email?.message}</span>

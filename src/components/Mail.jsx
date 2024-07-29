@@ -15,11 +15,13 @@ import { useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { db } from "../firebase"
 import { motion } from "framer-motion"
+import Avatar from "react-avatar"
 
 const Mail = () => {
     const navigate = useNavigate();
     const { selectedEmail } = useSelector(store => store.appSlice)
     const params = useParams();
+    const { user } = useSelector(store => store.appSlice);
 
     const deleteMailById = async (id) => {
         try {
@@ -91,12 +93,12 @@ const Mail = () => {
             </div>
 
             <div className="h-[90vh] overflow-y-auto p-4">
-                <div className="flex items-center justify-between bg-white gap-1">
+                <div className="flex items-center justify-between bg-white gap-1 ml-14">
                     <div className="flex items-center gap-2">
-                        <h1 className="text-xl font-medium">{selectedEmail?.subject}</h1>
+                        <h1 className="text-2xl font-medium text-gray-600">{selectedEmail?.subject}</h1>
                         <div className="flex items-center gap-1 text-sm bg-gray-200 rounded-md px-2">
                             <span>Inbox</span>
-                            <span className="hover:bg-gray-400">
+                            <span className="hover:bg-gray-400 rounded-full">
                                 <IoIosClose size={"15px"} />
                             </span>
                         </div>
@@ -106,12 +108,19 @@ const Mail = () => {
                     </div>
                 </div>
 
-                <div className="text-gray-500 text-sm ">
-                    <h1>You</h1>
-                    <span>to {selectedEmail?.to}</span>
+                <div className="flex items-center gap-4">
+                    <Avatar
+                        src={user?.photoURL}
+                        size="40"
+                        round={true}
+                    />
+                    <div className="text-gray-500 text-sm ">
+                        <h1> <strong className="text-gray-800">{user?.displayName}</strong> &lt;{user?.email}&gt; </h1>
+                        <span>to {selectedEmail?.to}</span>
+                    </div>
                 </div>
 
-                <div className="my-10 ">
+                <div className="my-10 ml-14">
                     <p>{selectedEmail?.message}</p>
                 </div>
             </div>
