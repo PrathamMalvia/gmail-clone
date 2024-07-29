@@ -48,9 +48,9 @@ const Message = ({ email }) => {
             </div>
 
             <div className="flex items-center ml-4 w-[15%]">
-                <p className="text-gray-900 font-semibold truncate inline-block max-w-full">
+                <h1 className="text-gray-900 font-semibold truncate inline-block max-w-full">
                     To: {email?.to}
-                </p>
+                </h1>
             </div>
 
             <div className="flex-1 ml-4">
